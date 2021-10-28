@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<p>N
+		<input type="text" id="n">
+	</p>
+	<p>X
+		<input type="text" id="r">
+	</p>
+	<p>P
+		<input type="text" id="p">
+	</p>
+	<button onclick="calculate()">Calcular</button>
+	<br>
+	<br>
+	<p>Resultado</p>
+	<input style="width: 500px;" type="text" id="result1"/>
+	<script type="text/javascript">
+		function calculate(){
+			var n=parseInt(document.getElementById("n").value);
+			var r=parseInt(document.getElementById("r").value);
+			var p=document.getElementById("p").value;
+			if(p<0||p>1){alert("Deve ser um número entre 0 e 1");return;}
+			if(r>n){alert("X deve ser menor ou igual a N");return;}
+			var nf=1;
+			var rf=1;
+			var nrf=1;
+			for(var k=r;k>=1;k--){
+				rf=rf*k;
+			}
+			for(var i=n;i>=1;i--){
+					nf=nf*i;
+			}
+
+			for(var j=(n-r);j>=1;j--){
+				nrf=nrf*j;
+			}
+			var npr=nf/nrf;
+			var ncr=npr/rf;
+			var des=ncr*Math.pow(p,r)*Math.pow((1-p),(n-r));
+			document.getElementById("result1").value=(des*1000000)/1000000;
+			console.log((des*1000000)/1000000);
+		}
+	</script>
+</body>
+</html>
